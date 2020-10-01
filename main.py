@@ -99,6 +99,34 @@ class email_sender:
         print('--------------------Email Sender---------------------|')
         print('|====================================================|')
 
+
+def main():
+    email_sender.view('firstProcess')
+    try:
+        inputNumber = int(input('Enter Your Dezired Operation Number : '))
+    except ValueError as e:
+        print('Enter Correct Number')
+        time.sleep(2)
+        main()
+    while inputNumber > 0 and inputNumber < 5:
+        if inputNumber == 1:
+            email_sender.createAGroup('Create a Group')
+        elif inputNumber == 2:
+            email_sender.sendEmailToAnIndividual('Email to Individual')
+        elif inputNumber == 3:
+            email_sender.sendEmailToAGroup('Email to a Group')
+        elif inputNumber == 4:
+            exit()
+
+        inputNumber = input('Want to Send More Emails?? : ')
+        if inputNumber == 'No' or inputNumber == 'no' or inputNumber == 'N' or inputNumber == 'n' or inputNumber == 'NO':
+            main()
+    else:
+        print('Enter Correct Number')
+        time.sleep(2)
+        main()
+
+
 if __name__ == "__main__":
     import smtplib
     import json
